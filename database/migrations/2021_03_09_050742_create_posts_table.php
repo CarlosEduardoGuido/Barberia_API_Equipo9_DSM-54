@@ -23,12 +23,11 @@ class CreatePostsTable extends Migration
             $table->enum('status', [0,1,2])->default(0);
             //declararemos nuestras llaves foraneas
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('tag_id');
             $table->unsignedBigInteger('category_id');
             //configurar llaves foraneas
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('tag_id')->references('id')->on('categories');
-            $table->foreign('category_id')->references('id')->on('tags');
+            $table->foreign('category_id')->references('id')->on('categories');
+
 
             $table->timestamps();
         });
