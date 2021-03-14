@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostTagsTable extends Migration
+class CreatePostsTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePostTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_tags', function (Blueprint $table) {
+        Schema::create('posts_tags', function (Blueprint $table) {
             $table->id();
-            //declaramos nuestra llave foranea
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('tag_id');
-            //configuramos nuestras llaver foraneas
-            $table->foreign('post_id')->references('id')->on('posts');
+            //configuamos nuestras llaves foraneas
             $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreign('post_id')->references('id')->on('posts');
+
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreatePostTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_tags');
+        Schema::dropIfExists('posts_tags');
     }
 }

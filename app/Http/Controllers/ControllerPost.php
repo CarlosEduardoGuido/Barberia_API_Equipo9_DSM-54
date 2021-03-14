@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\tags;
+ 
 use Illuminate\Http\Request;
-
-class TagsController extends Controller
+use App\Models\Post;
+class ControllerPost extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +14,9 @@ class TagsController extends Controller
     public function index()
     {
         //
+            $post = Post::all();
+            //dd($post);
+            return response()->json(['posts'=> $post]);
     }
 
     /**
@@ -41,21 +43,23 @@ class TagsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\tags  $tags
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(tags $tags)
+    public function show($id)
     {
         //
+        $post = Post::findOrfail($id);
+        return response()->json(['post' => $post]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\tags  $tags
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(tags $tags)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +68,10 @@ class TagsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\tags  $tags
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tags $tags)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +79,10 @@ class TagsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\tags  $tags
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tags $tags)
+    public function destroy($id)
     {
         //
     }

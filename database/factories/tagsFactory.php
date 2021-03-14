@@ -1,28 +1,30 @@
 <?php
+
 namespace Database\Factories;
-//Mandamos a llamar a nuestro modelo
+
+//use App\Models\Model;
 use App\Models\tags;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class tagsFactory extends Factory
+class TagsFactory extends Factory
 {
     /**
-     * The name of the factory's correponding model.
-     * 
+     * The name of the factory's corresponding model.
+     *
      * @var string
      */
-    protected $model = tags::class;
+    protected $model = Tags::class;
 
     /**
      * Define the model's default state.
-     * 
+     *
      * @return array
      */
     public function definition()
     {
-        return[
+        return [
             //
-            'name' => $this->faker->word 
+            'name' => $this->faker->word
         ];
     }
 }

@@ -1,36 +1,37 @@
 <?php
+
 namespace Database\Factories;
-//Mandamos a llamar a nuestro modelo
+
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
 {
     /**
-     * The name of the factory's correponding model.
-     * 
+     * The name of the factory's corresponding model.
+     *
      * @var string
      */
     protected $model = Post::class;
 
     /**
      * Define the model's default state.
-     * 
+     *
      * @return array
      */
     public function definition()
     {
-        return[
+        return [
             //
             'title' => $this->faker->sentence,
             'slug' => $this->faker->slug,
             'description' => $this->faker->text(80),
-            'image' => $this->faker->imageUrl(1200,720),
+            'image' =>  $this->faker->imageUrl(1280,720),
             'extract' => $this->faker->text(80),
             'status' => $this->faker->randomElement([1,2]),
-            //declaramos las llaves foraneas
-            'user_id' => rand(1,100),
-            'category_id' => rand(1,100),
+            'user_id' =>rand(1,100),
+            'category_id' =>rand(1,100),
+
         ];
     }
 }
